@@ -21,7 +21,7 @@ second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp
 `$ docker-compose exec second_server bash`
 
 * apacheの起動設定
-`# systemctl start httpd`
+`# systemctl start httpd`  
 `# systemctl enable httpd`
 
 * アクセス確認
