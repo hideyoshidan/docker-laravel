@@ -4,7 +4,7 @@
       ・command: - /sbin/init => これを実行させることにより、systemctlが使用できるようになる。
 
 ### build〜動作確認
-* ビルド
+* ビルド  
 `$ docker-compose up -d`
 <pre>
     Name                   Command               State                       Ports                     
@@ -17,13 +17,13 @@ second_server   /sbin/init                       Up      0.0.0.0:80->80/tcp
 second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp      
 </pre>
 
-* centos8, apacheのコンテナに入る
+* centos8, apacheのコンテナに入る  
 `$ docker-compose exec second_server bash`
 
-* apacheの起動設定
+* apacheの起動設定  
 `# systemctl start httpd`  
 `# systemctl enable httpd`
 
-* アクセス確認
+* アクセス確認  
 [テスト](http://test.lvh.me/)
 
