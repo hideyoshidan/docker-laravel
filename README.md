@@ -1,3 +1,13 @@
+
+## 環境
+| サービス | version |
+|:-----------|------------:|
+|CentOS 8|8.3.2011|
+|Apache|2.4.37|
+|PHP|8.0.2|
+|composer|2.0.9|
+|MySQL|8.0.23|
+
 ### 1. メモ
   - docker-compose.yml  
       * privileged: true => コンテナ起動時に、privilegedオプションをつける  
