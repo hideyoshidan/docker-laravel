@@ -30,8 +30,10 @@ second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp
 ### 3. laravel環境構築
 *  phpのコンテナに入る  
 `$ docker-compose exec second_php bash`
+
 * Laravelのプロジェクトを作成  
 `# composer create-project --prefer-dist laravel/laravel sample-project`
+
 * ドキュメントルートを追加（second_server/apache/conf/apache.conf）  
 => 既に記載してあります。
 ```conf:second_server/apache/conf/apache.conf
@@ -54,3 +56,35 @@ second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp
     DirectoryIndex index.php index.html
 </VirtualHost>
 ```
+
+* centos8, apacheのコンテナに入る  
+`$ docker-compose exec second_server bash`
+
+* apache再起動
+`# systemctl restart httpd`
+
+* .envの設定
+<pre>
+DB_CONNECTION=mysql
+DB_HOST=second_mysql
+DB_PORT=3306
+DB_DATABASE=second_db
+DB_USERNAME=second_user
+DB_PASSWORD=second
+
+MAIL_MAILER=smtp
+MAIL_HOST=second_mail
+MAIL_PORT=1025
+MAIL_USERNAME=second_user
+MAIL_PASSWORD=second_password
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS='sample@sample.com'
+MAIL_FROM_NAME="${APP_NAME}"
+
+REDIS_HOST=second_redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+</pre>
+
+### 4. メール確認
+[メール確認](http://sample-project.lvh.me:8025)
