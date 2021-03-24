@@ -67,10 +67,10 @@ second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp
 </VirtualHost>
 ```
 
-* centos8, apacheのコンテナに入る  
+* centos8, apacheのコンテナに入る    
 `$ docker-compose exec second_server bash`
 
-* apache再起動
+* apache再起動  
 `# systemctl restart httpd`
 
 * .envの設定
