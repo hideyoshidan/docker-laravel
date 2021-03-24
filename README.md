@@ -27,3 +27,29 @@ second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp
 * アクセス確認  
 [テスト](http://test.lvh.me/)
 
+### laravel環境構築
+*  phpのコンテナに入る  
+`$ docker-compose exec second_php bash`
+* Laravelのプロジェクトを作成  
+`# composer create-project --prefer-dist laravel/laravel sample-project`
+* ドキュメントルートを追加
+```conf:second_server/apache/conf/apache.conf
+# laravelのプロジェクト
+<VirtualHost *:80>
+    ServerName lvh.me
+    ServerAlias sample-project.lvh.me
+    VirtualDocumentRoot /var/www/html/sample-project/public
+
+    <FilesMatch \.php$>
+        SetHandler "proxy:fcgi://second_php:9000"
+    </FilesMatch>
+
+    <Directory /var/www/html>
+        DirectoryIndex index.php
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    DirectoryIndex index.php index.html
+</VirtualHost>
+```
