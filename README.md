@@ -5,6 +5,7 @@
 
 ### build〜動作確認
 * `$ docker-compose up -d`
+<pre>
     Name                   Command               State                       Ports                     
 -------------------------------------------------------------------------------------------------------
 second_mail     MailHog                          Up      0.0.0.0:1025->1025/tcp, 0.0.0.0:8025->8025/tcp
@@ -13,4 +14,4 @@ second_php      docker-php-entrypoint php-fpm    Up      0.0.0.0:55009->9000/tcp
 second_redis    docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp                        
 second_server   /sbin/init                       Up      0.0.0.0:80->80/tcp                            
 second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp      
-
+</pre>
