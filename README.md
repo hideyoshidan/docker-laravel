@@ -1,9 +1,9 @@
-### メモ
+### 1. メモ
   - docker-compose.yml  
       * privileged: true => コンテナ起動時に、privilegedオプションをつける  
       * command: - /sbin/init => これを実行させることにより、systemctlが使用できるようになる。
 
-### build〜動作確認
+### 2. build〜動作確認
 * ビルド  
 `$ docker-compose up -d`
 <pre>
@@ -27,12 +27,13 @@ second_sftp     /entrypoint second:second_ ...   Up      0.0.0.0:2222->22/tcp
 * アクセス確認  
 [テスト](http://test.lvh.me/)
 
-### laravel環境構築
+### 3. laravel環境構築
 *  phpのコンテナに入る  
 `$ docker-compose exec second_php bash`
 * Laravelのプロジェクトを作成  
 `# composer create-project --prefer-dist laravel/laravel sample-project`
-* ドキュメントルートを追加
+* ドキュメントルートを追加（second_server/apache/conf/apache.conf）  
+=> 既に記載してあります。
 ```conf:second_server/apache/conf/apache.conf
 # laravelのプロジェクト
 <VirtualHost *:80>
